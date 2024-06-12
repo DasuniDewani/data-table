@@ -1,5 +1,21 @@
 <div class="pagination">
-    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-    <span>{{ currentPage }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    <div></div>
+    
+    <div class="pagination-action">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>{{ currentPage }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+    
+    <div class="rows-per-page">
+        <span>Page size : </span>
+        <label *ngFor="let option of rowOptions">
+            <input type="radio" name="rowsPerPage" [value]="option" (change)="changeRowsPerPage(option)" [checked]="itemsPerPage === option">
+            {{ option }}
+        </label>
+        <label>
+            <input type="radio" name="rowsPerPage" [value]="0" (change)="changeRowsPerPage(0)" [checked]="itemsPerPage === 0">
+            All
+        </label>
+    </div>
 </div>

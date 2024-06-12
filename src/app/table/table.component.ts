@@ -31,13 +31,22 @@ export class TableComponent implements OnInit {
     });
   }
 
-  updatePagination(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    this.paginatedComments = this.filteredComments.slice(startIndex, startIndex + this.itemsPerPage);
+    updatePagination(): void {
+    if (this.itemsPerPage === 0) {
+      this.paginatedComments = this.filteredComments;
+    } else {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      this.paginatedComments = this.filteredComments.slice(startIndex, startIndex + this.itemsPerPage);
+    }
   }
 
   onPageChange(page: number): void {
     this.currentPage = page;
+    this.updatePagination();
+  }
+
+  onItemsPerPageChange(itemsPerPage: number): void {
+    this.itemsPerPage = itemsPerPage;
     this.updatePagination();
   }
 
