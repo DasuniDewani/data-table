@@ -1,12 +1,19 @@
 .pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    margin-top: 10px;
+    align-items: center;
+    gap: 80px;
+}
+
+.pagination-action {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
-    gap: 20px;
 }
 
-.pagination button {
+.pagination-action button {
     padding: 10px 18px;
     margin: 0 5px;
     background-color: #0d0d0d;
@@ -16,11 +23,32 @@
     cursor: pointer;
 }
 
-.pagination span {
+.pagination-action span {
     padding: 8px 16px;
     margin: 0 5px;
     color: #333;
     font-weight: bold;
     border: solid 2px #000000;
     border-radius: 5px;
+}
+
+.rows-per-page {
+    margin-left: 5px;
+}
+
+.rows-per-page label {
+    margin-right: 5px;
+}
+
+.rows-per-page input {
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .rows-per-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 }

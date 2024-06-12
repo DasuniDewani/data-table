@@ -13,9 +13,9 @@
             </thead>
             <tbody>
                     <tr *ngFor="let comment of paginatedComments">
-                        <td>{{ comment.id }}</td>
-                            <td [innerHTML]="highlightText(comment.email)"></td>
+                            <td>{{ comment.id }}</td>
                             <td [innerHTML]="highlightText(comment.name)"></td>
+                            <td [innerHTML]="highlightText(comment.email)"></td>
                             <td [innerHTML]="highlightText(comment.body)"></td>
                         <td>
                             <button class="delete-btn" (click)="deleteComment(comment.id)">Delete</button>
@@ -23,7 +23,11 @@
                     </tr>
             </tbody>
         </table>        
-        <app-pagination [totalItems]="filteredComments.length" (pageChange)="onPageChange($event)"></app-pagination>
+        <app-pagination 
+            [totalItems]="filteredComments.length" 
+            (pageChange)="onPageChange($event)"
+            (itemsPerPageChange)="onItemsPerPageChange($event)">
+        </app-pagination>
     </ng-container>
 
     <ng-template #noResults>
