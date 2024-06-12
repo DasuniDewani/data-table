@@ -13,12 +13,31 @@ th, td {
 th {
     background-color: #f2f2f2;
     cursor: pointer;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+    padding: 15px 10px;
 }
 
 tr:hover {
-    background-color: #ddd;
+    background-color: #e6e3f5;
 }
+
+.delete-btn {
+    padding: 8px 12px; 
+    color: #db0b20;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: solid 2px #db0b20;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.message {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+

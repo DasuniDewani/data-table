@@ -1,9 +1,14 @@
 body {
-    margin: 0;
+    margin: 10px;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
 }
 
 *, *::before, *::after {
     box-sizing: inherit;
+}
+
+.highlight {
+    background-color: yellow; 
+    font-weight: bold; 
 }
