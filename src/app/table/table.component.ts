@@ -19,17 +19,28 @@ export class TableComponent implements OnInit {
   itemsPerPage: number = 10;
   searchTerm: string = '';
   sortDirection: boolean = true;
+  isLoading: boolean = false;
   
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+    this.fetchComments();
+  }
+
+  fetchComments(): void {
+    this.isLoading = true;
     this.dataService.getComments().subscribe(data => {
       this.comments = data;
       this.filteredComments = data;
       this.updatePagination();
+      this.isLoading = false;
+    }, error => {
+      this.isLoading = false; 
+      console.error('Error fetching comments:', error);
     });
   }
+
 
     updatePagination(): void {
     if (this.itemsPerPage === 0) {
