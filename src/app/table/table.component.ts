@@ -3,13 +3,14 @@ import { DataService } from '../data.service';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from '../search/search.component';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-table',
   standalone: true,
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
-  imports: [CommonModule, SearchComponent, PaginationComponent]
+  imports: [CommonModule, SearchComponent, PaginationComponent, HttpClientModule]
 })
 export class TableComponent implements OnInit {
   comments: any[] = [];
