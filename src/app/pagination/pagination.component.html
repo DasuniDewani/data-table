@@ -1,10 +1,10 @@
 <div class="pagination">
     <div></div>
-    
+
     <div class="pagination-action">
-        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <button (click)="previousPage()" [disabled]="currentPage === 1">&#9664; Previous</button>
         <span>{{ currentPage }}</span>
-        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next &#9654;</button>
     </div>
     
     <div class="rows-per-page">

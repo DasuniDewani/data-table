@@ -18,18 +18,30 @@ export class TableComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
   searchTerm: string = '';
-  sortDirection: boolean = true;
+  sortField: string = 'id';
+  sortOrder: string = 'asc';
+  isLoading: boolean = false;
   
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+    this.fetchComments();
+  }
+
+  fetchComments(): void {
+    this.isLoading = true;
     this.dataService.getComments().subscribe(data => {
       this.comments = data;
       this.filteredComments = data;
       this.updatePagination();
+      this.isLoading = false;
+    }, error => {
+      this.isLoading = false; 
+      console.error('Error fetching comments:', error);
     });
   }
+
 
     updatePagination(): void {
     if (this.itemsPerPage === 0) {
@@ -60,11 +72,24 @@ export class TableComponent implements OnInit {
     this.updatePagination();
   }
 
-  sortData(column: string): void {
-    this.sortDirection = !this.sortDirection;
-    const direction = this.sortDirection ? 1 : -1;
-    this.filteredComments.sort((a, b) => a[column] > b[column] ? direction : -direction);
+  sortData(field: string, order: string): void {
+    this.sortField = field;
+    this.sortOrder = order;
+    this.sortComments();
     this.updatePagination();
+  }
+
+  sortComments(): void {
+    const direction = this.sortOrder === 'asc' ? 1 : -1;
+    this.filteredComments.sort((a, b) => {
+      if (a[this.sortField] > b[this.sortField]) {
+        return direction;
+      } else if (a[this.sortField] < b[this.sortField]) {
+        return -direction;
+      } else {
+        return 0;
+      }
+    });
   }
 
   deleteComment(id: number): void {
