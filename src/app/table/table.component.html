@@ -4,7 +4,7 @@
             <app-search (searchTerm)="onSearch($event)"></app-search>
 
             <ng-container *ngIf="filteredComments.length > 0; else noResults">        
-                <table *ngIf="!isLoading">
+                <table>
                     <thead>
                         <tr>
                         <th>
@@ -31,15 +31,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr *ngFor="let comment of paginatedComments">
-                                    <td>{{ comment.id }}</td>
-                                    <td [innerHTML]="highlightText(comment.name)"></td>
-                                    <td [innerHTML]="highlightText(comment.email)"></td>
-                                    <td [innerHTML]="highlightText(comment.body)"></td>
-                                <td>
-                                    <button class="delete-btn" (click)="deleteComment(comment.id)">Delete</button>
-                                </td>
-                            </tr>
+                        <tr *ngFor="let comment of paginatedComments">
+                                <td>{{ comment.id }}</td>  
+                                <td [innerHTML]="highlightText(comment.name)"></td>
+                                <td [innerHTML]="highlightText(comment.email)"></td>
+                                <td [innerHTML]="highlightText(comment.body)"></td>
+                            <td>
+                                <button class="delete-btn" (click)="deleteComment(comment.id)">Delete</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>        
                 <app-pagination 

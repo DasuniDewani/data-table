@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from '../search/search.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Comment } from '../comment.interface';
 
 @Component({
   selector: 'app-table',
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, SearchComponent, PaginationComponent, HttpClientModule]
 })
 export class TableComponent implements OnInit {
-  comments: any[] = [];
+  comments: Comment[] = [];
   filteredComments: any[] = [];
   paginatedComments: any[] = [];
   currentPage: number = 1;
